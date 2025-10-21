@@ -14,6 +14,7 @@ class ProductController extends Controller
                 'name' => $product->product_name,
                 'price' => $product->price,
                 'image_url' => $product->img_path ? asset('storage/'. $product->img_path) : null,
+                // 'image_url' => $product->getFirstMediaUrl('products', 'preview'),
                 'composition' => $product->composition,
                 'benefits' => $product->benefits,
             ];

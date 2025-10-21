@@ -22,7 +22,7 @@ export default function Hero() {
             </div>
 
             <div className="my-auto">
-                <img src="images/hero.JPG" alt="hero.JPG" className="rounded-lg" />
+                <img src="images/hero_img_compressed.JPG" alt="hero.JPG" className="rounded-lg" />
             </div>
         </div>
     )
