@@ -18,6 +18,7 @@ class ProductForm
                 TextInput::make('product_name')
                     ->label('Nama Produk')
                     ->required()
+                    ->minLength(3)
                     ->maxLength(255),
                 TextInput::make('price')
                     ->label('Harga Produk')
@@ -28,13 +29,19 @@ class ProductForm
                 FileUpload::make('img_path')
                     ->label('Gambar Produk')
                     ->image()
-                    ->directory('products'),
+                    ->maxSize(5120)
+                    ->directory('products')
+                    ->required()
+                    ->validationMessages([
+                        'max' => 'Ukuran gambar tidak boleh lebih dari 5 MB.',
+                    ]),
                 Repeater::make('composition')
                     ->label('Daftar Komposisi')
                     ->schema([
                         TextInput::make('ingredient')
                             ->label('Komposisi')
                             ->required()
+                            ->minLength(3)
                             ->maxLength(255),
                     ])
                     ->addActionLabel('Tambah Komposisi')

@@ -15,9 +15,12 @@ class ProductsTable
         return $table
             ->columns([
                 TextColumn::make('product_name')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Nama Produk')
+                    ->sortable(),
                 TextColumn::make('price')
                     ->money('IDR')
+                    ->label('Harga Produk')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()

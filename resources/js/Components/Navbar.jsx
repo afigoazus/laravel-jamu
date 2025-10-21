@@ -4,7 +4,7 @@ import { Badge } from "./ui/badge";
 
 export default function Navbar({ onCartClick, cartCount }) {
     return (
-        <nav className="flex justify-between items-center py-6 w-11/12 mx-auto">
+        <nav className="flex justify-between items-center py-6 w-11/12 mx-auto shadow-sm">
             <div className="text-2xl font-bold text-stone-900">
                 <h1>Masinis</h1>
             </div>

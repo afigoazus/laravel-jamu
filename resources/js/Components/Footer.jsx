@@ -9,6 +9,12 @@ export default function Footer() {
                     <div>
                         <h3 className="text-lg font-bold">Masinis (Manisan Manis)</h3>
                         <p className="text-stone-400 mt-2">Kehangatan rempah asli, manisnya tradisi nusantara.</p>
+
+                        <div className="mt-10">
+                            <a href="/admin">
+                                <p className="font-semibold text-stone-400">Login Admin</p> 
+                            </a>
+                        </div>
                     </div>
 
                     <div>

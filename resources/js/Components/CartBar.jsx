@@ -204,7 +204,7 @@ Terima kasih!`
                                 :
                                 (
                                     cartItems.map((product => (
-                                        <div className="flex gap-4 border-b p-3" key={product.id}>
+                                        <div className="flex gap-4 border-b border-gray-300 p-3" key={product.id}>
                                             <img src={product.image_url} alt={product.name} className="w-40 rounded-md" />
 
                                             <div className="flex-grow space-y-4">
@@ -260,69 +260,71 @@ Terima kasih!`
                                     <span className="text-stone-800 font-semibold">Lengkapi data di bawah ini:</span>
 
                                     <div className="space-y-4 mt-4">
-                                        <div className="space-y-1">
+                                        <div className="space-y-2">
                                             <label className="block text-sm font-medium text-gray-700">Nama Penerima:</label>
-                                            <input type="text" name="recipientName" placeholder="Masukkan nama lengkap Anda" {...register("recipientName", { required: true })} className="w-full p-0 border-0 border-b border-gray-300 focus:rounded-md focus:ring-gray-500" />
+                                            <input type="text" name="recipientName" placeholder="Masukkan nama lengkap Anda" {...register("recipientName", { required: true })} className="w-full border-2 rounded-lg border-green-700 h-10 px-4 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition duration-300 ease-in-out" />
                                         </div>
 
-                                        <Controller
-                                            name="provinsi" 
-                                            control={control}
-                                            rules={{ required: true }}
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => handleDropdownChange("provinsi", e.target.value, field.onChange)} disabled={isLoading.provinsi} className="w-full p-2 border rounded">
-                                                    <option value="">{isLoading.provinsi ? "Memuat" : "Pilih Provinsi"}</option>
-                                                    {opsi.provinsi.map(prov => <option key={prov.id} value={`${prov.id},${prov.name}`}>{prov.name}</option>)}
+                                        <div className="space-y-2">
+                                            <label className="text-sm font-medium text-gray-700">
+                                                Data Alamat
+                                            </label>
 
-                                                </select>
-                                            )}
-                                        />
+                                            <Controller
+                                                name="provinsi" 
+                                                control={control}
+                                                rules={{ required: true }}
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => handleDropdownChange("provinsi", e.target.value, field.onChange)} disabled={isLoading.provinsi} className="w-full h-10 pl-4 pr-10 text-gray-800 bg-white border-2 border-green-700 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition duration-300 ease-in-out">
+                                                        <option value="">{isLoading.provinsi ? "Memuat" : "Pilih Provinsi"}</option>
+                                                        {opsi.provinsi.map(prov => <option key={prov.id} value={`${prov.id},${prov.name}`}>{prov.name}</option>)}
+                                                    </select>
+                                                )}
+                                            />
 
-                                        <Controller
-                                            name="kota" 
-                                            control={control}
-                                            rules={{ required: true }}
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => handleDropdownChange("kota", e.target.value, field.onChange)} disabled={!pilihan.provinsi || isLoading.kota} className="w-full p-2 border rounded">
-                                                    <option value="">{isLoading.kota ? "Memuat" : "Pilih Kota"}</option>
-                                                    {opsi.kota.map(kota => <option key={kota.id} value={`${kota.id},${kota.name}`}>{kota.name}</option>)}
+                                            <Controller
+                                                name="kota" 
+                                                control={control}
+                                                rules={{ required: true }}
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => handleDropdownChange("kota", e.target.value, field.onChange)} disabled={!pilihan.provinsi || isLoading.kota} className="w-full h-10 pl-4 pr-10 text-gray-800 bg-white border-2 border-green-700 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition duration-300 ease-in-out">
+                                                        <option value="">{isLoading.kota ? "Memuat" : "Pilih Kota"}</option>
+                                                        {opsi.kota.map(kota => <option key={kota.id} value={`${kota.id},${kota.name}`}>{kota.name}</option>)}
+                                                    </select>
+                                                )}
+                                            />
 
-                                                </select>
-                                            )}
-                                        />
-
-                                        <Controller
-                                            name="kecamatan" 
-                                            control={control}
-                                            rules={{ required: true }}
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => handleDropdownChange("kecamatan", e.target.value, field.onChange)} disabled={!pilihan.kota || isLoading.kecamatan} className="w-full p-2 border rounded">
-                                                    <option value="">{isLoading.kecamatan? "Memuat" : "Pilih Kecamatan"}</option>
-                                                    {opsi.kecamatan.map(kec => <option key={kec.id} value={`${kec.id},${kec.name}`}>{kec.name}</option>)}
-
-                                                </select>
-                                            )}
-                                        />
-                                        
-                                        <Controller
-                                            name="kelurahan" 
-                                            control={control}
-                                            rules={{ required: true }}
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => handleDropdownChange("kelurahan", e.target.value, field.onChange)} disabled={!pilihan.kecamatan || isLoading.kelurahan} className="w-full p-2 border rounded">
-                                                    <option value="">{isLoading.kelurahan ? "Memuat" : "Pilih Kelurahan/Desa"}</option>
-                                                    {opsi.kelurahan.map(kel => <option key={kel.id} value={`${kel.id},${kel.name}`}>{kel.name}</option>)}
-
-                                                </select>
-                                            )}
-                                        />
+                                            <Controller
+                                                name="kecamatan" 
+                                                control={control}
+                                                rules={{ required: true }}
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => handleDropdownChange("kecamatan", e.target.value, field.onChange)} disabled={!pilihan.kota || isLoading.kecamatan} className="w-full h-10 pl-4 pr-10 text-gray-800 bg-white border-2 border-green-700 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition duration-300 ease-in-out">
+                                                        <option value="">{isLoading.kecamatan? "Memuat" : "Pilih Kecamatan"}</option>
+                                                        {opsi.kecamatan.map(kec => <option key={kec.id} value={`${kec.id},${kec.name}`}>{kec.name}</option>)}
+                                                    </select>
+                                                )}
+                                            />
+                                            
+                                            <Controller
+                                                name="kelurahan" 
+                                                control={control}
+                                                rules={{ required: true }}
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => handleDropdownChange("kelurahan", e.target.value, field.onChange)} disabled={!pilihan.kecamatan || isLoading.kelurahan} className="w-full h-10 pl-4 pr-10 text-gray-800 bg-white border-2 border-green-700 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition duration-300 ease-in-out">
+                                                        <option value="">{isLoading.kelurahan ? "Memuat" : "Pilih Kelurahan/Desa"}</option>
+                                                        {opsi.kelurahan.map(kel => <option key={kel.id} value={`${kel.id},${kel.name}`}>{kel.name}</option>)}
+                                                    </select>
+                                                )}
+                                            />
+                                        </div>
 
                                         {/* Input Alamat Lengkap */}
-                                        <div className="space-y-1">
+                                        <div className="space-y-2">
                                             <label className="block text-sm font-medium text-gray-700">Alamat Lengkap</label>
                                             <textarea name="fullAddress"
                                             {...register("fullAddress", { required: true })}
-                                            rows={3} placeholder="Jl. Pahlawan No. 123, RT 01/RW 02, Kel. Suka Maju, Kec. Damai Sejahtera, Kota Bahagia, 12345" className="w-full p-0 border-0 border-b border-gray-300 focus:rounded-md focus:ring-gray-500" />
+                                            rows={3} placeholder="Jl. Pahlawan No. 123, RT 01/RW 02, Kel. Suka Maju, Kec. Damai Sejahtera, Kota Bahagia, 12345" className="w-full border-2 rounded-lg border-green-700 px-4 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition duration-300 ease-in-out" />
                                         </div>
                                     </div>
                                 </form>
